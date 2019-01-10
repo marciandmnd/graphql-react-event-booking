@@ -14,7 +14,9 @@ app.use('/graphql', graphqlHttp({
   graphiql: true
 }))
 
-mongoose.connect(`mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-wb7cg.mongodb.net/${process.env.MONGO_DB}?retryWrites=true`, { useNewUrlParser: true })
+const mongoDBURI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster0-wb7cg.mongodb.net/${process.env.MONGO_DB}?retryWrites=true`;
+console.log(mongoDBURI)
+mongoose.connect(mongoDBURI, { useNewUrlParser: true })
   .then(() => {
     app.listen(3000)
   }).catch(err => {
